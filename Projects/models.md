@@ -4,7 +4,7 @@
   - pk_wid(PK)
   - name(string)
 
-<!-- npx sequelize model:generate --name Workcpace --attributes pk_wid:integer,name:string -->
+<!-- npx sequelize model:generate --name Workspace --attributes pk_wid:integer,name:string -->
 
 - User
   - pk_uid(PK)
@@ -22,7 +22,7 @@
   - name(string)
   - dc_flag(boolean)
 
-<!-- npx sequelize model:generate --name Space --attributes pksid:integer,pk_wid:integer,name:string,dc_flag:boolean -->
+<!-- npx sequelize model:generate --name Space --attributes pk_sid:integer,pk_wid:integer,name:string,dc_flag:boolean -->
 
 - Thread
   - pk_tid(PK)
@@ -48,3 +48,21 @@
   - path
 
 <!-- npx sequelize model:generate --name Images --attributes pk_iid:integer,pk_uid:integer,path:string -->
+
+
+<!-- 作成したマイグレーションファイルを実行する。 -->
+
+npx sequelize-cli db:migrate --env development
+
+<!-- seed:generate box -->
+
+npx sequelize-cli seed:generate --name workspaces
+npx sequelize-cli seed:generate --name spaces
+npx sequelize-cli seed:generate --name thread
+npx sequelize-cli seed:generate --name comment
+npx sequelize-cli seed:generate --name user
+npx sequelize-cli seed:generate --name image
+
+<!-- Seedの内容を反映 -->
+
+npx sequelize-cli db:seed:all

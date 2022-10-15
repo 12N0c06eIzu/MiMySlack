@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Workcpace extends Model {
+  class Workspace extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Workcpace.init({
+  Workspace.init({
     pk_wid: DataTypes.INTEGER,
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Workcpace',
+    modelName: 'Workspace',
   });
-  return Workcpace;
+  return Workspace;
 };

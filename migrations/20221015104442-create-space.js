@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      pksid: {
+      pk_sid: {
         type: Sequelize.INTEGER
       },
       pk_wid: {
