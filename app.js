@@ -30,7 +30,7 @@ app.get('/all-users', (req, res) => {
     //   title: 'Users/Index',
     //   content: users
     // }
-    res.json(data);
+    res.json(users);
   });
 
 

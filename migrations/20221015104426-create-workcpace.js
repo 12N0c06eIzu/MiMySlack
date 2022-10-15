@@ -2,24 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Threads', {
-      pk_tid: {
+    await queryInterface.createTable('Workcpaces', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      pk_sid: {
+      pk_wid: {
         type: Sequelize.INTEGER
       },
-      pk_uid: {
-        type: Sequelize.INTEGER
-      },
-      content: {
+      name: {
         type: Sequelize.STRING
-      },
-      send_dt: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Threads');
+    await queryInterface.dropTable('Workcpaces');
   }
 };

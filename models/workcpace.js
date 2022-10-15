@@ -22,5 +22,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Workcpace;
 };
-
-removeAttribute('id');

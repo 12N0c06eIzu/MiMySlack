@@ -2,15 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Workcpaces', {
-      pk_wid: {
+    await queryInterface.createTable('Spaces', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      pksid: {
+        type: Sequelize.INTEGER
+      },
+      pk_wid: {
+        type: Sequelize.INTEGER
+      },
       name: {
         type: Sequelize.STRING
+      },
+      dc_flag: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -23,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Workcpaces');
+    await queryInterface.dropTable('Spaces');
   }
 };

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Space.init({
-    pk_sid: DataTypes.INTEGER,
+    pksid: DataTypes.INTEGER,
     pk_wid: DataTypes.INTEGER,
     name: DataTypes.STRING,
     dc_flag: DataTypes.BOOLEAN

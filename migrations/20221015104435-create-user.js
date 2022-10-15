@@ -2,11 +2,14 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Spaces', {
-      pk_sid: {
+    await queryInterface.createTable('Users', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      pk_uid: {
         type: Sequelize.INTEGER
       },
       pk_wid: {
@@ -15,8 +18,14 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      dc_flag: {
-        type: Sequelize.BOOLEAN
+      nickname: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      pk_iid: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Spaces');
+    await queryInterface.dropTable('Users');
   }
 };
