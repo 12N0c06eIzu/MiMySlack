@@ -15,7 +15,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Workspace.init({
     pk_wid: DataTypes.INTEGER,
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Please your "Name"',
+        },
+      },
+    }
   }, {
     sequelize,
     modelName: 'Workspace',
