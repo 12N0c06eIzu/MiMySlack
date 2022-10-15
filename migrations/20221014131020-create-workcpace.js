@@ -12,7 +12,7 @@ module.exports = {
       pk_wid: {
         type: Sequelize.INTEGER
       },
-      : {
+      name: {
         type: Sequelize.STRING
       },
       createdAt: {
