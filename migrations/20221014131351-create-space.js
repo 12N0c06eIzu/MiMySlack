@@ -3,13 +3,10 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Spaces', {
-      id: {
+      pk_sid: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      pksid: {
         type: Sequelize.INTEGER
       },
       pk_wid: {

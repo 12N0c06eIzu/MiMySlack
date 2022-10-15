@@ -3,13 +3,10 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Threads', {
-      id: {
+      pk_tid: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      pk_tid: {
         type: Sequelize.INTEGER
       },
       pk_sid: {

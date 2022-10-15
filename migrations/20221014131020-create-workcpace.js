@@ -3,13 +3,10 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Workcpaces', {
-      id: {
+      pk_wid: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      pk_wid: {
         type: Sequelize.INTEGER
       },
       name: {
