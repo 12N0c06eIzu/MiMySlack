@@ -45,7 +45,7 @@ router.get('/search', (req, res, next) => {
     })
   });
 
-  router.get('/delete', (req, res) => {
+  router.post('/delete', (req, res) => {
     models.Workspace.destroy({
       where: {
         id: req.body.id
@@ -55,17 +55,5 @@ router.get('/search', (req, res, next) => {
       res.redirect('/workspaces');
     })
   });
-
-  router.post('/delete', (req, res, next) => {
-    models.sequelize.sync()
-    .then(() => models.Workspace.create({
-      pk_wid: req.body.id,
-      name: req.body.name
-    }))
-    .then(usr => {
-      res.redirect('/workspaces');
-    })
-  });
-
 
 module.exports = router;

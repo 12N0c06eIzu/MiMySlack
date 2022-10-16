@@ -5,3 +5,7 @@ div
                 p id: #{user.id}
                 p name: #{user.name}
                 a(href='#')= user.id
+                
+                form(action="/workspaces/delete" method="post")
+                    input(type="hidden" name="id" value=user.id)
+                    button(type="submit") 削除
