@@ -1,0 +1,15 @@
+spacesdiv
+    ul
+        //- li ggggg
+        each user in users
+            li
+                div 
+                    p #{user.id}: #{user.content}
+                    form(action="/Threads/update" method="post") 
+                        input(type="hidden" name="id" value=user.pk_wid)
+                        input(type="text" name="content" value=user.content)
+                        button(type="submit") 更新
+
+                    form(action="/Threads/delete" method="post")
+                        input(type="hidden" name="id" value=user.id)
+                        button(type="submit") 削除

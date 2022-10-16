@@ -1,0 +1,14 @@
+div 
+    ul
+        each user in users
+            li
+                div 
+                    p #{user.id}: #{user.name}
+                    form(action="/spaces/update" method="post") 
+                        input(type="hidden" name="id" value=user.pk_wid)
+                        input(type="text" name="name" value=user.name)
+                        button(type="submit") 更新
+
+                    form(action="/spaces/delete" method="post")
+                        input(type="hidden" name="id" value=user.id)
+                        button(type="submit") 削除
