@@ -12,7 +12,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/all', (req, res) => {
   models.Comment.findAll().then((users) => {
-    res.render('comments/all', { "users": users });
+    // res.render('comments/all', { "users": users });
+    res.json({ "data": users})
   });
 });
 

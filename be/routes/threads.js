@@ -12,7 +12,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/all', (req, res) => {
   models.Thread.findAll().then((users) => {
-    res.render('threads/all', { "users": users });
+    // res.render('threads/all', { "users": users });
+    res.json({ "data": users})
   });
 });
 
