@@ -1,5 +1,6 @@
 <template>
   <div class="desktop">
+    <Navbar />
     <splitpanes class="default-theme" style="height: 100%">
       <pane max-size="25">
         <Space />
@@ -22,15 +23,18 @@ import axios from "axios";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
+import Navbar from '@/components/Navbar.vue';
+
 import Space from '@/components/Spaces.vue';
-import Thread from '@/components/Threads.vue'
-import Comments from '@/components/Comments.vue'
+import Thread from '@/components/Threads.vue';
+import Comments from '@/components/Comments.vue';
 
 export default {
   name: "HomeView",
   components: {
     Splitpanes,
     Pane,
+    Navbar,
     Space,
     Thread,
     Comments

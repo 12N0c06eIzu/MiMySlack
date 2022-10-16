@@ -3,7 +3,7 @@
     <div>
       <ul v-for="value in result.data" :key="value">
         <li v-for="item in value" :key="item">
-          <p>{{ item.id }} : {{ item.name }}</p>
+          <p>{{ item.id }} : {{ item.content }}</p>
         </li>
       </ul>
     </div>
@@ -18,14 +18,9 @@ import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
-// import Space from '@/components/Spaces.vue';
-
 export default {
   name: "HomeView",
   components: {
-    // Splitpanes,
-    // Pane,
-    // Space
   },
   data() {
     return {

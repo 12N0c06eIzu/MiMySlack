@@ -18,14 +18,9 @@ import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
-// import Space from '@/components/Spaces.vue';
-
 export default {
   name: "HomeView",
   components: {
-    // Splitpanes,
-    // Pane,
-    // Space
   },
   data() {
     return {
