@@ -1,0 +1,7 @@
+div 
+    ul
+        each user in users
+            li
+                p id: #{user.id}
+                p name: #{user.name}
+                a(href='#')= user.id
