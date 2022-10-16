@@ -11,6 +11,7 @@ var spaceRouter = require('./routes/spaces');
 var userRouter = require('./routes/users');
 var threadRouter = require('./routes/threads');
 var commentRouter = require('./routes/comments');
+const cors = require("cors");
 
 var app = express();
 
@@ -18,6 +19,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

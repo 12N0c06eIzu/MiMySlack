@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express fix' });
 });
 
+router.get('/vue', function(req, res, next) {
+  res.sendFile(__dirname + '/../dist/index.html')
+});
+
 module.exports = router;

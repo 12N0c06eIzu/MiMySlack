@@ -12,7 +12,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/all', (req, res) => {
   models.Workspace.findAll().then((users) => {
-    res.render('workspaces/all', { "users": users });
+    // res.render('workspaces/all', { "users": users });
+    res.json({"data": users})
   });
 });
 
