@@ -45,6 +45,19 @@ router.get('/search', (req, res, next) => {
     })
   });
 
+  router.post('/update', (req, res, next) => {
+    console.log(req.body)
+    models.Workspace.findOne({
+      where: {
+        pk_wid: {[Op.eq]: req.body.id}
+      }
+    }).then(usr => {
+      usr.name = req.body.name;
+      usr.save();
+      res.redirect('/workspaces/all');
+    })
+  });
+
   router.post('/delete', (req, res) => {
     models.Workspace.destroy({
       where: {

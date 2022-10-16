@@ -2,10 +2,13 @@ div
     ul
         each user in users
             li
-                p id: #{user.id}
-                p name: #{user.name}
-                a(href='#')= user.id
-                
-                form(action="/workspaces/delete" method="post")
-                    input(type="hidden" name="id" value=user.id)
-                    button(type="submit") 削除
+                div 
+                    p #{user.id}: #{user.name}
+                    form(action="/workspaces/update" method="post") 
+                        input(type="text" name="id" value=user.pk_wid)
+                        input(type="text" name="name" value=user.name)
+                        button(type="submit") 更新
+
+                    form(action="/workspaces/delete" method="post")
+                        input(type="hidden" name="id" value=user.id)
+                        button(type="submit") 削除
