@@ -6,12 +6,13 @@ var router = express.Router();
 const models = require('../models');
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  res.send('workspaces');
+  // res.send('workspaces');
+  res.render('workspaces/index');
 });
 
 router.get('/all', (req, res) => {
   models.Workspace.findAll().then((users) => {
-    res.json(users);
+    res.render('workspaces/all', { "users": users });
   });
 });
 
@@ -45,9 +46,25 @@ router.get('/search', (req, res, next) => {
   });
 
   router.get('/delete', (req, res) => {
-    models.Workspace.findAll().then((users) => {
-      res.json(users);
-    });
+    models.Workspace.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(usr => {
+      res.redirect('/workspaces');
+    })
+  });
+
+  router.post('/delete', (req, res, next) => {
+    models.sequelize.sync()
+    .then(() => models.Workspace.create({
+      pk_wid: req.body.id,
+      name: req.body.name
+    }))
+    .then(usr => {
+      res.redirect('/workspaces');
+    })
   });
 
 
