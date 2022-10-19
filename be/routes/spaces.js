@@ -28,6 +28,17 @@ router.get("/search", (req, res, next) => {
   });
 });
 
+router.get("/searchSpaces", (req, res, next) => {
+  const pk_wid = req.query.pk_wid;
+  models.Space.findAll({
+    where: {
+      pk_wid: { [Op.eq]: pk_wid },
+    },
+  }).then((users) => {
+    res.json(users);
+  });
+});
+
 router.get("/create", (req, res, next) => {
   var data = {
     title: "spaces/create",

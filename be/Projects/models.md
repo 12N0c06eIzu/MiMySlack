@@ -49,6 +49,11 @@
 
 <!-- npx sequelize model:generate --name Images --attributes pk_iid:integer,pk_uid:integer,path:string -->
 
+- WorkspaceKeys
+  - pk_wid(FK)
+  - pk_uid(FK)
+
+npx sequelize model:generate --name WorkspaceKeys pk_wid:integer,pk_uid:integer
 
 <!-- 作成したマイグレーションファイルを実行する。 -->
 

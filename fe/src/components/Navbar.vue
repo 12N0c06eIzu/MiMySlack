@@ -2,9 +2,15 @@
 <div class="navbar">
     <b-navbar>
         <b-navbar-brand href="/">MyMiniSlack</b-navbar-brand>
-        <b-form-select v-model="selected">
-            <b-form-select-option v-for="value in result.data" :key="value.id" :value="value.id">{{value.name}}</b-form-select-option>
+        <b-form-select v-model="selected" v-on:change="selectWs">
+            <b-form-select-option
+             v-for="value in result.data"
+             :key="value.id" 
+             :value="value.id">
+                {{value.name}}
+             </b-form-select-option>
         </b-form-select>
+        <p>{{$store.state.workspaceId}}</p>
     </b-navbar>
     <!-- {{result.data}} -->
 </div>
@@ -22,12 +28,22 @@ export default {
         return {
         selected: null,
         result: "",
+        val: ""
         };
     },
+    methods: {
+        selectWs: function(e) {
+            axios.get("http://localhost:3000/spaces/searchSpaces?pk_wid="+ e)
+                .then((res) => {
+                    this.$store.state.spaceFunction.spaceList.data = res.data;
+                });
+        }
+    },
     mounted() {
-        axios.get("http://localhost:3000/workspaces/all").then((res) => {
-        this.result = res.data;
-        });
+        axios.get("http://localhost:3000/workspaces/all")
+            .then((res) => {
+                this.result = res.data;
+            });
     },
 };
 </script>

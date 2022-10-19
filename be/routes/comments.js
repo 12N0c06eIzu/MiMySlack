@@ -28,6 +28,17 @@ router.get('/search', (req, res, next) => {
     });
   });
 
+  router.get('/searchWs', (req, res, next) => {
+    const id = req.query.id;
+    models.Comment.findAll({
+        where: {
+            id: {[Op.eq]:id}
+        }
+    }).then((users) => {
+      res.json(users);
+    });
+  });
+
   router.get('/create', (req, res, next) => {
     var data = {
       title: 'comments/create'

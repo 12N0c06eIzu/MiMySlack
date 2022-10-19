@@ -1,7 +1,11 @@
 <template>
   <div class="desktop">
     <Navbar />
-    <splitpanes class="default-theme" style="height: 100%">
+    <splitpanes
+      class="default-theme"
+      style="height: 100%"
+      @changeWs="onChangeWs"
+    >
       <pane max-size="25">
         <Space />
       </pane>
@@ -23,11 +27,11 @@ import axios from "axios";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
-import Navbar from '@/components/Navbar.vue';
+import Navbar from "@/components/Navbar.vue";
 
-import Space from '@/components/Spaces.vue';
-import Thread from '@/components/Threads.vue';
-import Comments from '@/components/Comments.vue';
+import Space from "@/components/Spaces.vue";
+import Thread from "@/components/Threads.vue";
+import Comments from "@/components/Comments.vue";
 
 export default {
   name: "HomeView",
@@ -37,12 +41,27 @@ export default {
     Navbar,
     Space,
     Thread,
-    Comments
+    Comments,
   },
   data() {
     return {
       result: "",
+      val: "",
+      pWsId: "",
     };
+  },
+  provide() {
+    return {
+      pWsId: this.pWsId,
+      providedMethod: this.method,
+    };
+  },
+  methods: {
+    onChangeWs: function (e) {
+      console.log("onChangeWs");
+      console.log(e);
+      this.val = e;
+    },
   },
   mounted() {
     axios.get("http://localhost:3000/workspaces/all").then((res) => {
