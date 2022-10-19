@@ -10,9 +10,7 @@
                 {{value.name}}
              </b-form-select-option>
         </b-form-select>
-        <p>{{$store.state.workspaceId}}</p>
     </b-navbar>
-    <!-- {{result.data}} -->
 </div>
 </template>
 
@@ -40,7 +38,8 @@ export default {
         }
     },
     mounted() {
-        axios.get("http://localhost:3000/workspaces/all")
+        // const target_id = $store.state.authFunction.userId
+        axios.get("http://localhost:3000/workspaces/all" )
             .then((res) => {
                 this.result = res.data;
             });

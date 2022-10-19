@@ -11,6 +11,8 @@ var spaceRouter = require('./routes/spaces');
 var userRouter = require('./routes/users');
 var threadRouter = require('./routes/threads');
 var commentRouter = require('./routes/comments');
+var authRouter = require('./routes/auth');
+
 const cors = require("cors");
 
 var app = express();
@@ -33,6 +35,7 @@ app.use('/spaces', spaceRouter);
 app.use('/users', userRouter);
 app.use('/threads', threadRouter);
 app.use('/comments', commentRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

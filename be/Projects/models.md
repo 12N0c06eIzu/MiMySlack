@@ -53,7 +53,7 @@
   - pk_wid(FK)
   - pk_uid(FK)
 
-npx sequelize model:generate --name WorkspaceKeys pk_wid:integer,pk_uid:integer
+<!-- npx sequelize model:generate --name WorkspaceKeys pk_wid:integer,pk_uid:integer -->
 
 <!-- 作成したマイグレーションファイルを実行する。 -->
 
@@ -67,7 +67,11 @@ npx sequelize-cli seed:generate --name thread
 npx sequelize-cli seed:generate --name comment
 npx sequelize-cli seed:generate --name user
 npx sequelize-cli seed:generate --name image
-
+npx sequelize-cli seed:generate --name workspaceKeys
 <!-- Seedの内容を反映 -->
 
+<!-- 全実行 -->
 npx sequelize-cli db:seed:all
+
+<!-- 全削除 -->
+npx sequelize-cli db:migrate:undo:all

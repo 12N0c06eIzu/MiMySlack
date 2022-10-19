@@ -4,7 +4,7 @@ import workspaceFunction from './modules/workspace'
 import spaceFunction from './modules/space'
 import threadFunction from './modules/thread'
 import commentFunction from './modules/comment'
-
+import authFunction from './modules/auth'
 export default createStore({
   state: {
   },
@@ -18,6 +18,7 @@ export default createStore({
     workspaceFunction,
     spaceFunction,
     threadFunction,
-    commentFunction
+    commentFunction,
+    authFunction
   }
 })

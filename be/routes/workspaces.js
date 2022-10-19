@@ -28,17 +28,6 @@ router.get("/search", (req, res, next) => {
   });
 });
 
-router.get("/searchWorkspaces", (req, res, next) => {
-  const id = req.query.id;
-  models.Workspace.findAll({
-    where: {
-      id: { [Op.eq]: id },
-    },
-  }).then((users) => {
-    res.json(users);
-  });
-});
-
 router.get("/create", (req, res, next) => {
   var data = {
     title: "Workspaces/create",
