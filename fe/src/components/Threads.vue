@@ -1,12 +1,15 @@
 <template>
   <div class="space">
+    <Header title="スレッド" />
+    <InputForm :inputId="this.$store.state.spaceFunction.spaceId"/>
     <div>
       <ul>
-        <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value">
-          <div>
-            <button class="btn btn-light openBtn" :value="value.id" @:click="openThread(value.id)">
-              {{value.content}} → </button>
-          </div>
+        <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value" class="row list-unstyled">
+          <p class="text-start col-9">
+            {{value.content}}
+          </p>
+          <button class="btn btn-light openBtn col-2" :value="value.id" @:click="openThread(value.id)">
+            → </button>
         </li>
       </ul>
     </div>
@@ -20,10 +23,14 @@
 import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
+import Header from "../components/Header.vue"
+import InputForm from "../components/InputForm.vue"
 
 export default {
   name: "HomeView",
   components: {
+    Header,
+    InputForm
   },
   data() {
     return {
@@ -32,7 +39,7 @@ export default {
   },
   methods: {
     openThread: function (btnValue) {
-      console.log(btnValue);
+      this.$store.state.threadFunction.threadId = btnValue;
       // this.$store.state.spaceFunction.spaceId = btnValue;
       axios.get("http://localhost:3000/comments/searchComments?id=" + btnValue)
         .then((res) => {

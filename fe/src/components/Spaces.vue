@@ -1,21 +1,16 @@
 <template>
   <div class="space">
+    <Header title="スペース" />
+    <InputForm :inputId="this.$store.state.workspaceFunction.workspaceId"/>
     <div>
-      <!-- <ul v-for="value in result.data" :key="value"> -->
-      <!-- <li v-for="item in value" :key="item"> -->
-      <!-- {{item}} -->
-      <!-- <p>{{ item.id }} : {{ item.name }}</p> -->
-      <!-- </li> -->
-      <!-- </ul> -->
       <ul>
-        <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value">
-          <!-- {{ value.name}} -->
-          <button class="btn btn-light openBtn" :value="value.id" @:click="openSpace(value.id)">
-            {{value.name}} → </button>
+        <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value" class="row list-unstyled">
+          <p class="text-start col-9">
+            {{value.name}}
+          </p>
+          <button class="btn btn-light openBtn col-2" :value="value.id" @:click="openSpace(value.id)"> → </button>
         </li>
       </ul>
-      <!-- {{ $store.state.spaceFunction.spaceList }} -->
-      <!-- gege -->
     </div>
   </div>
 </template>
@@ -29,10 +24,14 @@
 import axios from "axios";
 
 import "splitpanes/dist/splitpanes.css";
+import Header from "../components/Header.vue"
+import InputForm from "../components/InputForm.vue"
 
 export default {
   name: "HomeView",
   components: {
+    Header,
+    InputForm
   },
   data() {
     return {
@@ -44,7 +43,6 @@ export default {
       console.log("exec searchSpaces");
     },
     openSpace: function (btnValue) {
-      console.log(btnValue);
       this.$store.state.spaceFunction.spaceId = btnValue;
       axios.get("http://localhost:3000/threads/searchThreads?id=" + btnValue)
         .then((res) => {

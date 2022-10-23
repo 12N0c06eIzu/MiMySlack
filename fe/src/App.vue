@@ -1,8 +1,7 @@
 <template>
-  <!-- <nav>
-    <router-link to="/desktop">Desktop</router-link> 
-  </nav> -->
-  <router-view/>
+  <div class="text-left">
+    <router-view/>
+  </div>
 </template>
 
 <style>

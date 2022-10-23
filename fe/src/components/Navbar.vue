@@ -28,6 +28,7 @@ export default {
     },
     methods: {
         selectWs: function (e) {
+            this.$store.state.workspaceFunction.workspaceId = e;
             axios.get("http://localhost:3000/spaces/searchSpaces?pk_wid=" + e)
                 .then((res) => {
                     this.$store.state.spaceFunction.spaceList.data = res.data;

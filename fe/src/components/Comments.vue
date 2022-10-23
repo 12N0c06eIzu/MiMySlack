@@ -1,11 +1,14 @@
 <template>
   <div class="space">
+    <Header title="コメント" />
+    <InputForm :inputId="this.$store.state.threadFunction.threadId"/>
     <div>
       <ul>
-        <li v-for="value in this.$store.state.commentFunction.commentList.data" :key="value">
+        <li v-for="value in this.$store.state.commentFunction.commentList.data" :key="value" class="row list-unstyled">
           <div>
-            <button class="btn btn-light openBtn" :value="value.id">
-              {{value.content}}</button>
+            <p class="text-start col-9">
+              {{value.content}}
+            </p>
           </div>
         </li>
       </ul>
@@ -20,10 +23,14 @@
 import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
+import Header from "../components/Header.vue"
+import InputForm from "../components/InputForm.vue"
 
 export default {
   name: "HomeView",
   components: {
+    Header,
+    InputForm
   },
   data() {
     return {
