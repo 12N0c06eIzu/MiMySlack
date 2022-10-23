@@ -3,11 +3,10 @@
         <b-navbar>
             <b-navbar-brand href="/">MyMiniSlack</b-navbar-brand>
             <b-form-select v-model="selected" v-on:change="selectWs">
-                <b-form-select-option v-for="value in result" :key="value.id" :value="value.id" v-model="selected">
+                <b-form-select-option v-for="value in result" :key="value.id" :value="value.id" v-model="selected" class="w-100">
                     {{value.Workspace.name}}
                 </b-form-select-option>
             </b-form-select>
-            {{ this.$store.state.spaceFunction.spaceId }}
         </b-navbar>
     </div>
 </template>

@@ -34,7 +34,7 @@ export default {
     openThread: function (btnValue) {
       console.log(btnValue);
       // this.$store.state.spaceFunction.spaceId = btnValue;
-      axios.get("http://localhost:3000/threads/searchThreads?id=" + btnValue)
+      axios.get("http://localhost:3000/comments/searchComments?id=" + btnValue)
         .then((res) => {
           this.$store.state.commentFunction.commentList.data = res.data;
         });

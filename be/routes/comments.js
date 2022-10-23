@@ -30,9 +30,9 @@ router.get('/search', (req, res, next) => {
 
   router.get("/searchComments", (req, res, next) => {
     const id = req.query.id;
-    models.Thread.findAll({
+    models.Comment.findAll({
       where: {
-        pk_sid: { [Op.eq]: id },
+        pk_tid: { [Op.eq]: id },
       },
     }).then((users) => {
       res.json(users);
