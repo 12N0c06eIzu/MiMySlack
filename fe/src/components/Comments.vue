@@ -1,9 +1,12 @@
 <template>
   <div class="space">
     <div>
-      <ul v-for="value in result.data" :key="value">
-        <li v-for="item in value" :key="item">
-          <p>{{ item.id }} : {{ item.content }}</p>
+      <ul>
+        <li v-for="value in this.$store.state.commentFunction.commentList.data" :key="value">
+          <div>
+            <button class="btn btn-light openBtn" :value="value.id">
+              {{value.content}}</button>
+          </div>
         </li>
       </ul>
     </div>
@@ -26,6 +29,8 @@ export default {
     return {
       result: "",
     };
+  },
+  methods: {
   },
   mounted() {
     axios.get("http://localhost:3000/comments/all").then((res) => {

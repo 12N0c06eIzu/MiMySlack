@@ -28,12 +28,12 @@ router.get('/search', (req, res, next) => {
     });
   });
 
-  router.get('/searchWs', (req, res, next) => {
+  router.get("/searchComments", (req, res, next) => {
     const id = req.query.id;
-    models.Comment.findAll({
-        where: {
-            id: {[Op.eq]:id}
-        }
+    models.Thread.findAll({
+      where: {
+        pk_sid: { [Op.eq]: id },
+      },
     }).then((users) => {
       res.json(users);
     });

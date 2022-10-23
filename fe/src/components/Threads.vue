@@ -1,9 +1,12 @@
 <template>
   <div class="space">
     <div>
-      <ul v-for="value in result.data" :key="value">
-        <li v-for="item in value" :key="item">
-          <p>{{ item.id }} : {{ item.content }}</p>
+      <ul>
+        <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value">
+          <div>
+            <button class="btn btn-light openBtn" :value="value.id" @:click="openThread(value.id)">
+              {{value.content}} → </button>
+          </div>
         </li>
       </ul>
     </div>
@@ -27,10 +30,20 @@ export default {
       result: "",
     };
   },
+  methods: {
+    openThread: function (btnValue) {
+      console.log(btnValue);
+      // this.$store.state.spaceFunction.spaceId = btnValue;
+      axios.get("http://localhost:3000/threads/searchThreads?id=" + btnValue)
+        .then((res) => {
+          this.$store.state.commentFunction.commentList.data = res.data;
+        });
+    }
+  },
   mounted() {
-    axios.get("http://localhost:3000/threads/all").then((res) => {
-      this.result = res;
-    });
+    // axios.get("http://localhost:3000/threads/all").then((res) => {
+    //   this.result = res;
+    // });
   },
 };
 </script>

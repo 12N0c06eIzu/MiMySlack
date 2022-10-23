@@ -1,17 +1,15 @@
 <template>
-<div class="navbar">
-    <b-navbar>
-        <b-navbar-brand href="/">MyMiniSlack</b-navbar-brand>
-        <b-form-select v-model="selected" v-on:change="selectWs">
-            <b-form-select-option
-             v-for="value in result"
-             :key="value.id" 
-             :value="value.id" v-model="selected">
-                {{value.Workspace.name}}
-             </b-form-select-option>
-        </b-form-select>
-    </b-navbar>
-</div>
+    <div class="navbar">
+        <b-navbar>
+            <b-navbar-brand href="/">MyMiniSlack</b-navbar-brand>
+            <b-form-select v-model="selected" v-on:change="selectWs">
+                <b-form-select-option v-for="value in result" :key="value.id" :value="value.id" v-model="selected">
+                    {{value.Workspace.name}}
+                </b-form-select-option>
+            </b-form-select>
+            {{ this.$store.state.spaceFunction.spaceId }}
+        </b-navbar>
+    </div>
 </template>
 
 
@@ -24,14 +22,14 @@ export default {
     },
     data() {
         return {
-        selected: '',
-        result: "",
-        val: ""
+            selected: '',
+            result: "",
+            val: ""
         };
     },
     methods: {
-        selectWs: function(e) {
-            axios.get("http://localhost:3000/spaces/searchSpaces?pk_wid="+ e)
+        selectWs: function (e) {
+            axios.get("http://localhost:3000/spaces/searchSpaces?pk_wid=" + e)
                 .then((res) => {
                     this.$store.state.spaceFunction.spaceList.data = res.data;
                 });
@@ -39,11 +37,9 @@ export default {
     },
     async mounted() {
         const target_id = this.$store.state.authFunction.userId;
-        console.log(target_id);
-        await axios.get("http://localhost:3000/auth/searchWs?id="+target_id)
+        await axios.get("http://localhost:3000/auth/searchWs?id=" + target_id)
             .then((res) => {
                 this.result = res.data;
-                console.log(this.result);
             });
     },
 };
