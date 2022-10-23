@@ -1,7 +1,10 @@
 <template>
   <div class="space">
     <Header title="スレッド" />
-    <InputForm :inputId="this.$store.state.spaceFunction.spaceId"/>
+    <InputForm
+    :inputId="this.$store.state.spaceFunction.spaceId"
+    sendMode="S0003"
+    />
     <div>
       <ul>
         <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value" class="row list-unstyled">

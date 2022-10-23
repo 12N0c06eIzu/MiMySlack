@@ -1,7 +1,10 @@
 <template>
   <div class="space">
     <Header title="スペース" />
-    <InputForm :inputId="this.$store.state.workspaceFunction.workspaceId"/>
+    <InputForm 
+    :inputId="this.$store.state.workspaceFunction.workspaceId"
+    sendMode="S0002"
+    />
     <div>
       <ul>
         <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value" class="row list-unstyled">

@@ -49,8 +49,9 @@ router.get('/search', (req, res, next) => {
   router.post('/create', (req, res, next) => {
     models.sequelize.sync()
     .then(() => models.Comment.create({
-      pk_wid: req.body.id,
-      name: req.body.name
+      pk_tid: req.body.tid,
+      pk_uid: req.body.uid,
+      content: req.body.content
     }))
     .then(usr => {
       res.redirect('/comments');

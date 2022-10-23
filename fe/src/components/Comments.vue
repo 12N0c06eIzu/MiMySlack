@@ -1,13 +1,16 @@
 <template>
   <div class="space">
     <Header title="コメント" />
-    <InputForm :inputId="this.$store.state.threadFunction.threadId"/>
+    <InputForm 
+    :inputId="this.$store.state.threadFunction.threadId"
+    sendMode="S0004"
+    />
     <div>
       <ul>
         <li v-for="value in this.$store.state.commentFunction.commentList.data" :key="value" class="row list-unstyled">
           <div>
             <p class="text-start col-9">
-              {{value.content}}
+              ○： {{value.content}}
             </p>
           </div>
         </li>
