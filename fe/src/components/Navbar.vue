@@ -4,10 +4,10 @@
         <b-navbar-brand href="/">MyMiniSlack</b-navbar-brand>
         <b-form-select v-model="selected" v-on:change="selectWs">
             <b-form-select-option
-             v-for="value in result.data"
+             v-for="value in result"
              :key="value.id" 
-             :value="value.id">
-                {{value.name}}
+             :value="value.id" v-model="selected">
+                {{value.Workspace.name}}
              </b-form-select-option>
         </b-form-select>
     </b-navbar>
@@ -24,7 +24,7 @@ export default {
     },
     data() {
         return {
-        selected: null,
+        selected: '',
         result: "",
         val: ""
         };
@@ -37,11 +37,13 @@ export default {
                 });
         }
     },
-    mounted() {
-        // const target_id = $store.state.authFunction.userId
-        axios.get("http://localhost:3000/workspaces/all" )
+    async mounted() {
+        const target_id = this.$store.state.authFunction.userId;
+        console.log(target_id);
+        await axios.get("http://localhost:3000/auth/searchWs?id="+target_id)
             .then((res) => {
                 this.result = res.data;
+                console.log(this.result);
             });
     },
 };
