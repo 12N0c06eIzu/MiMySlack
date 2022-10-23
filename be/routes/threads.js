@@ -47,12 +47,12 @@ router.get("/create", (req, res, next) => {
 });
 
 router.post("/create", (req, res, next) => {
-  models.sequelize
-    .sync()
+  models.sequelize.sync()
     .then(() =>
       models.Thread.create({
-        pk_wid: req.body.id,
-        name: req.body.name,
+        pk_sid: req.body.pid,
+        pk_uid: req.body.cid,
+        content: req.body.content,
       })
     )
     .then((usr) => {

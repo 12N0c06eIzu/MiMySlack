@@ -39,7 +39,9 @@ export default {
         console.log("テキストが空のため不正です。");
         return "error";
       }
-      // let url = "";
+      let url = "";
+      let route = [];
+      // URLだけ調節するようにする方がコードがシンプルになりそう。
       switch (this.sendMode) {
         case "S0001":
           console.log(this.sendMode);
@@ -50,35 +52,52 @@ export default {
           break;
 
         case "S0003":
+          url = "http://localhost:3000/threads/";
+          route.push("create", "searchThreads?id=");
           console.log(this.sendMode);
           break;
 
         case "S0004":
+          url = "http://localhost:3000/comments/";
+          route.push("create", "searchComments?id=");
           console.log(this.sendMode);
-          axios
-            .post("http://localhost:3000/comments/create", {
-              tid: this.inputId,
-              uid: this.$store.state.authFunction.userId,
-              content: this.text,
-            })
-            .then((res) => {
-              console.log(res.data);
-              axios
-                .get(
-                  "http://localhost:3000/comments/searchComments?id=" +
-                    this.inputId
-                )
-                .then((res) => {
-                  this.$store.state.commentFunction.commentList.data = res.data;
-                  this.text = "";
-                });
-            });
-
           break;
 
         default:
           console.log("送信処理分岐の対象外");
+          break;
       }
+      // URLを動的に変更
+      axios
+        .post(url + route[0], {
+          // parentID
+          pid: this.inputId,
+          // childId
+          cid: this.$store.state.authFunction.userId,
+          // content
+          content: this.text,
+        })
+        .then((res) => {
+          console.log(res.data);
+          axios.get(url + route[1] + this.inputId).then((res) => {
+            switch (this.sendMode) {
+              case "S0001":
+                break;
+              case "S0002":
+                break;
+              case "S0003":
+                this.$store.state.threadFunction.threadList.data = res.data;
+                break;
+              case "S0004":
+                this.$store.state.commentFunction.commentList.data = res.data;
+                break;
+              default:
+                break;
+            }
+            // 入力値を初期化
+            this.text = "";
+          });
+        });
     },
   },
   mounted() {},
