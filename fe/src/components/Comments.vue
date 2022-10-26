@@ -5,15 +5,19 @@
     <div>
       <ul>
         <li v-for="(value, index) in this.$store.state.commentFunction.commentList.data" :key="value"
-          class="row list-unstyled pe-3">
+          class="row list-unstyled pe-3 mt-1">
           <div @:mouseover="showTooltip(index)" class="position-relative">
-            <p class="text-start col-9">
+            <p class="text-start col-9 lh-base">
               ○： {{ value.content }}
             </p>
             <div v-show="hoverFlag && index === showContentIndex" class="text-end">
-              <div class="position-absolute top-0 end-0 bg-warning me-5">
-                <button type="button" class="btn btn-dark">U</button>
-                <button type="button" class="btn btn-dark">D</button>
+              <div class="position-absolute top-0 end-0 me-5 shadow bg-body rounded">
+                <button type="button" class="btn m-1 border">
+                  <icon class="mdi mdi-trash-can-outline"></icon>
+                </button>
+                <button type="button" class="btn m-1 border">
+                  <icon class="mdi mdi-draw-pen"></icon>
+                </button>
               </div>
             </div>
           </div>
