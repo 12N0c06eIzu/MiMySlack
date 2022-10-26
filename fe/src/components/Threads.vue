@@ -51,9 +51,6 @@ export default {
     }
   },
   mounted() {
-    // axios.get("http://localhost:3000/threads/all").then((res) => {
-    //   this.result = res;
-    // });
   },
 };
 </script>

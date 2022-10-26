@@ -27,8 +27,8 @@ import axios from "axios";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
+// コンポーネント呼出
 import Navbar from "@/components/Navbar.vue";
-
 import Space from "@/components/Spaces.vue";
 import Thread from "@/components/Threads.vue";
 import Comments from "@/components/Comments.vue";

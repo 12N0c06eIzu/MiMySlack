@@ -54,9 +54,6 @@ export default {
     }
   },
   mounted() {
-    // axios.get("http://localhost:3000/spaces/all").then((res) => {
-    //   this.result = res;
-    // });
   },
   watch: {
     pWsId: "searchSpaces"
