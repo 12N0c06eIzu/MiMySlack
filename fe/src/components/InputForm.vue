@@ -41,6 +41,7 @@ export default {
       }
       let url = "";
       let route = [];
+      let data = {};
       // URLだけ調節するようにする方がコードがシンプルになりそう。
       switch (this.sendMode) {
         case "S0001":
@@ -48,19 +49,51 @@ export default {
           break;
 
         case "S0002":
+          url = "http://localhost:3000/spaces/";
+          route.push("create", "searchSpaces?pk_wid=");
           console.log(this.sendMode);
+          // データをJSON形式で保存して積んでいく
+          data = {
+            // parentID
+            pid: this.inputId,
+            // childId
+            // ここ積んでるけど使ってませんし登録してません
+            cid: this.$store.state.authFunction.userId,
+            // DM Flag
+            dc_flag: 0,
+            // content
+            content: this.text,
+          };
           break;
 
         case "S0003":
           url = "http://localhost:3000/threads/";
           route.push("create", "searchThreads?id=");
           console.log(this.sendMode);
+          // データをJSON形式で保存して積んでいく
+          data = {
+            // parentID
+            pid: this.inputId,
+            // childId
+            cid: this.$store.state.authFunction.userId,
+            // content
+            content: this.text,
+          };
           break;
 
         case "S0004":
           url = "http://localhost:3000/comments/";
           route.push("create", "searchComments?id=");
           console.log(this.sendMode);
+          // データをJSON形式で保存して積んでいく
+          data = {
+            // parentID
+            pid: this.inputId,
+            // childId
+            cid: this.$store.state.authFunction.userId,
+            // content
+            content: this.text,
+          };
           break;
 
         default:
@@ -68,36 +101,29 @@ export default {
           break;
       }
       // URLを動的に変更
-      axios
-        .post(url + route[0], {
-          // parentID
-          pid: this.inputId,
-          // childId
-          cid: this.$store.state.authFunction.userId,
-          // content
-          content: this.text,
-        })
-        .then((res) => {
-          console.log(res.data);
-          axios.get(url + route[1] + this.inputId).then((res) => {
-            switch (this.sendMode) {
-              case "S0001":
-                break;
-              case "S0002":
-                break;
-              case "S0003":
-                this.$store.state.threadFunction.threadList.data = res.data;
-                break;
-              case "S0004":
-                this.$store.state.commentFunction.commentList.data = res.data;
-                break;
-              default:
-                break;
-            }
-            // 入力値を初期化
-            this.text = "";
-          });
+      axios.post(url + route[0], data).then((res) => {
+        // console.log(res.data);
+        axios.get(url + route[1] + this.inputId).then((res) => {
+          switch (this.sendMode) {
+            case "S0001":
+              break;
+            case "S0002":
+              this.$store.state.spaceFunction.spaceList.data = res.data;
+              break;
+            case "S0003":
+              this.$store.state.threadFunction.threadList.data = res.data;
+              break;
+            case "S0004":
+              this.$store.state.commentFunction.commentList.data = res.data;
+              break;
+            default:
+              break;
+          }
+          // 入力値を初期化
+          this.text = "";
         });
+        console.log(res.data);
+      });
     },
   },
   mounted() {},

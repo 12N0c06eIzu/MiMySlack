@@ -51,8 +51,8 @@ router.post("/create", (req, res, next) => {
     .sync()
     .then(() =>
       models.Space.create({
-        pk_wid: req.body.id,
-        name: req.body.name,
+        pk_wid: req.body.pid,
+        name: req.body.content,
       })
     )
     .then((usr) => {
