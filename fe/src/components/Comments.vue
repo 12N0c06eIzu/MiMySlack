@@ -1,17 +1,21 @@
 <template>
   <div class="space">
     <Header title="コメント" />
-    <InputForm 
-    :inputId="this.$store.state.threadFunction.threadId"
-    sendMode="S0004"
-    />
+    <InputForm :inputId="this.$store.state.threadFunction.threadId" sendMode="S0004" />
     <div>
       <ul>
-        <li v-for="value in this.$store.state.commentFunction.commentList.data" :key="value" class="row list-unstyled">
-          <div>
+        <li v-for="(value, index) in this.$store.state.commentFunction.commentList.data" :key="value"
+          class="row list-unstyled pe-3">
+          <div @:mouseover="showTooltip(index)" class="position-relative">
             <p class="text-start col-9">
-              ○： {{value.content}}
+              ○： {{ value.content }}
             </p>
+            <div v-show="hoverFlag && index === showContentIndex" class="text-end">
+              <div class="position-absolute top-0 end-0 bg-warning me-5">
+                <button type="button" class="btn btn-dark">U</button>
+                <button type="button" class="btn btn-dark">D</button>
+              </div>
+            </div>
           </div>
         </li>
       </ul>
@@ -33,14 +37,24 @@ export default {
   name: "HomeView",
   components: {
     Header,
-    InputForm
+    InputForm,
   },
   data() {
     return {
-      result: "",
+      result: '',
+      hoverFlag: false,
+      showContentIndex: null
     };
   },
   methods: {
+    /**
+     * ツールチップを表示する。
+     * @param {*} idx Hoverした要素のIndex
+     */
+    showTooltip: function (idx) {
+      this.hoverFlag = true;
+      this.showContentIndex = idx;
+    }
   },
   mounted() {
   },
