@@ -27,6 +27,10 @@ export default {
         };
     },
     methods: {
+        /**
+         * スペースを更新する。
+         * @param {*} e 選択したコンボボックスのValue
+         */
         selectWs: function (e) {
             this.$store.state.workspaceFunction.workspaceId = e;
             axios.get("http://localhost:3000/spaces/searchSpaces?pk_wid=" + e)
@@ -40,6 +44,10 @@ export default {
         await axios.get("http://localhost:3000/auth/searchWs?id=" + target_id)
             .then((res) => {
                 this.result = res.data;
+                // selectedに設定する。
+                this.selected = this.result[0].id;
+                // 1個目を最初にロードする。
+                this.selectWs(this.result[0].id)
             });
     },
 };
