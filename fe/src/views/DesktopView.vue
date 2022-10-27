@@ -6,10 +6,10 @@
       style="height: 100%"
       @changeWs="onChangeWs"
     >
-      <pane max-size="25">
+      <pane max-size="15">
         <Space />
       </pane>
-      <Pane max-size="25">
+      <Pane max-size="35">
         <Thread />
       </Pane>
       <Pane max-size="50">
