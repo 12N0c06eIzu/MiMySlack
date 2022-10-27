@@ -8,11 +8,12 @@
     <div>
       <ul>
         <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value" class="row list-unstyled mt-1">
-          <p class="text-start col-9">
+          <p class="text-start col-10">
             {{value.content}}
           </p>
-          <button class="btn btn-light openBtn col-2 border" :value="value.id" @:click="openThread(value.id)">
-            → </button>
+          <button class="btn btn-light openBtn col-1 border" :value="value.id" @:click="openThread(value.id)">
+            <icon class="mdi mdi-arrow-right-thick"></icon>
+          </button>
         </li>
       </ul>
     </div>
