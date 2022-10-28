@@ -3,13 +3,13 @@
     <Navbar />
     <splitpanes
       class="default-theme"
-      style="height: 100%"
+      style="width: 100%"
       @changeWs="onChangeWs"
     >
-      <pane max-size="15">
+      <pane max-size="20" min-size="20">
         <Space />
       </pane>
-      <Pane max-size="35">
+      <Pane min-size="30">
         <Thread />
       </Pane>
       <Pane max-size="50">

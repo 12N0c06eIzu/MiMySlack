@@ -10,3 +10,4 @@
 ## Wiki
 - https://materialdesignicons.com/
 - https://getbootstrap.jp/docs/5.0/getting-started/introduction/
+- https://github.com/antoniandre/splitpanes

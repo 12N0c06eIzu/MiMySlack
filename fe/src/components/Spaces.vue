@@ -8,10 +8,10 @@
     <div>
       <ul>
         <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value" class="row list-unstyled mt-1">
-          <p class="text-start col-9">
+          <p class="text-start col-8">
             {{value.name}}
           </p>
-          <button class="btn btn-light openBtn col-2 border" :value="value.id" @:click="openSpace(value.id)">
+          <button class="btn btn-light openBtn col-3 border" :value="value.id" @:click="openSpace(value.id)">
             <Icons iconName="arrow-right-thick"/>
           </button>
         </li>
