@@ -2,19 +2,23 @@
   <div
     class="position-absolute top-0 end-0 me-5 shadow bg-body rounded" >
     <button type="button" class="btn m-1 border">
-      <icon class="mdi mdi-trash-can-outline"></icon>
+      <Icons iconName="trash-can-outline"/>
     </button>
     <button type="button" class="btn m-1 border">
-      <icon class="mdi mdi-draw-pen"></icon>
+      <Icons iconName="draw-pen"/>
     </button>
   </div>
 </template>
 
 
 <script>
+import Icons from "@/components/utils/MdiIcons.vue";
+
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    Icons
+  },
   data() {
     return {
       selected: "",

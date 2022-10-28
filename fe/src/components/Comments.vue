@@ -13,7 +13,7 @@
           :key="value"
           class="row list-unstyled pe-3 mt-1"
         >
-          <div @:mouseover="showTooltip(index)" class="position-relative">
+          <div @:mouseover="showTooltip(index)" @:mouseleave="hiddenTooltip(index)" class="position-relative">
             <p class="text-start col-9 lh-base">○： {{ value.content }}</p>
             <div
               v-show="hoverFlag && index === showContentIndex"
@@ -62,6 +62,13 @@ export default {
       this.hoverFlag = true;
       this.showContentIndex = idx;
     },
+    /**
+     * ツールチップを非表示する。
+     * @param {*} idx Hoverした要素のIndex
+     */
+     hiddenTooltip: function() {
+      this.hoverFlag = false;
+    }
   },
   mounted() {},
 };

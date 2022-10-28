@@ -11,7 +11,9 @@
           <p class="text-start col-9">
             {{value.name}}
           </p>
-          <button class="btn btn-light openBtn col-2 border" :value="value.id" @:click="openSpace(value.id)"> → </button>
+          <button class="btn btn-light openBtn col-2 border" :value="value.id" @:click="openSpace(value.id)">
+            <Icons iconName="arrow-right-thick"/>
+          </button>
         </li>
       </ul>
     </div>
@@ -29,12 +31,15 @@ import axios from "axios";
 import "splitpanes/dist/splitpanes.css";
 import Header from "../components/Header.vue"
 import InputForm from "../components/InputForm.vue"
+import Icons from "@/components/utils/MdiIcons.vue";
+
 
 export default {
   name: "HomeView",
   components: {
     Header,
-    InputForm
+    InputForm,
+    Icons
   },
   data() {
     return {

@@ -12,7 +12,7 @@
             {{value.content}}
           </p>
           <button class="btn btn-light openBtn col-1 border" :value="value.id" @:click="openThread(value.id)">
-            <icon class="mdi mdi-arrow-right-thick"></icon>
+            <Icons iconName="arrow-right-thick"/>
           </button>
         </li>
       </ul>
@@ -30,11 +30,14 @@ import "splitpanes/dist/splitpanes.css";
 import Header from "../components/Header.vue"
 import InputForm from "../components/InputForm.vue"
 
+import Icons from "@/components/utils/MdiIcons.vue";
+
 export default {
   name: "HomeView",
   components: {
     Header,
-    InputForm
+    InputForm,
+    Icons
   },
   data() {
     return {
