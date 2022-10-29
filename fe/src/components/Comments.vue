@@ -19,7 +19,7 @@
               v-show="hoverFlag && index === showContentIndex"
               class="text-end"
             >
-              <TooltipVue />
+              <TooltipVue :dataId="value.id"/>
             </div>
           </div>
         </li>

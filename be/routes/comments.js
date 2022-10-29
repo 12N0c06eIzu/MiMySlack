@@ -74,7 +74,9 @@ router.get('/search', (req, res, next) => {
   router.post('/delete', (req, res) => {
     models.Comment.destroy({
       where: {
-        id: req.body.id
+        id: req.body.id,
+        pk_tid: req.body.tid,
+        pk_uid: req.body.uid
       }
     })
     .then(usr => {
