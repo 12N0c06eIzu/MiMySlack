@@ -14,7 +14,7 @@
 import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 export default {
-  name: "HomeView",
+  name: "InputFormView",
   props: {
     title: String,
     inputId: Number,

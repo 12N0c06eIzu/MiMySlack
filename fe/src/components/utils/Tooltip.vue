@@ -1,25 +1,24 @@
 <template>
   <div
     class="position-absolute top-0 end-0 me-5 shadow bg-body rounded" >
-    <button type="button" class="btn m-1 border" @click="deleteBtn">
-      <Icons iconName="trash-can-outline"/>
-    </button>
+    <Delete :dataId="dataId"/>
     <button type="button" class="btn m-1 border">
       <Icons iconName="draw-pen"/>
     </button>
-    {{ dataId }}
   </div>
 </template>
 
 
 <script>
-import Icons from "@/components/utils/MdiIcons.vue";
 import axios from 'axios';
+import Icons from "@/components/utils/MdiIcons.vue";
+import Delete from '@/components/utils/buttons/Delete.vue';
 
 export default {
-  name: "HomeView",
+  name: "TooltipView",
   components: {
-    Icons
+    Icons,
+    Delete
   },
   props: {
       dataId: Number

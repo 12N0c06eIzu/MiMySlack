@@ -37,10 +37,10 @@
 import "splitpanes/dist/splitpanes.css";
 import Header from "../components/Header.vue";
 import InputForm from "../components/InputForm.vue";
-import TooltipVue from "./Tooltip.vue";
+import TooltipVue from "./utils/Tooltip.vue";
 
 export default {
-  name: "HomeView",
+  name: "CommentsView",
   components: {
     Header,
     InputForm,
