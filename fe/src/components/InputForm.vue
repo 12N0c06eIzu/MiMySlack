@@ -2,7 +2,12 @@
   <div class="input-group px-3 pb-3">
     <input type="hidden" :value="inputId" />
     <input type="hidden" :value="sendMode" />
-    <input type="text" class="form-control" v-model="text" />
+    <textarea
+      type="text"
+      class="form-control"
+      v-model="text"
+      @keydown="sendText"
+    />
     <button class="btn btn-outline-secondary" @:click="send">OK</button>
   </div>
 </template>
@@ -24,6 +29,7 @@ export default {
   data() {
     return {
       text: "",
+      keyCodeBefore: null,
     };
   },
   methods: {
@@ -124,6 +130,24 @@ export default {
         });
         console.log(res.data);
       });
+    },
+    /**
+     * Control(Code: 17)を直前に押下していた場合
+     * 投稿するメソッドを発火させる。
+     * @param {*} e 
+     * keyCode: キーコード
+     * key: キー名
+     */
+    sendText: function (e) {
+      console.log(e.keyCode);
+      if (this.keyCodeBefore == 17) {
+        console.log("koko");
+        if (e.keyCode == 13) {
+          this.send();
+        }
+      }
+      // 直前に入力したキーのコードを保存する。
+      this.keyCodeBefore = e.keyCode;
     },
   },
   mounted() {},

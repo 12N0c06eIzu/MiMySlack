@@ -6,13 +6,15 @@
     sendMode="S0002"
     />
     <div>
-      <ul>
-        <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value" class="row list-unstyled mt-1">
-          <p class="text-start col-8">
+      <ul class="textList">
+        <li v-for="(value) in this.$store.state.spaceFunction.spaceList.data" :key="value" class="row list-unstyled my-2">
+          <!-- <p class="text-start col-8">
             {{value.name}}
-          </p>
-          <button class="btn btn-light openBtn col-3 border" :value="value.id" @:click="openSpace(value.id)">
-            <Icons iconName="arrow-right-thick"/>
+          </p> -->
+          <button class="btn btn-light openBtn" :value="value.id" @:click="openSpace(value.id)">
+            {{value.name}}
+
+            <!-- <Icons iconName="arrow-right-thick"/> -->
           </button>
         </li>
       </ul>
@@ -31,7 +33,7 @@ import axios from "axios";
 import "splitpanes/dist/splitpanes.css";
 import Header from "../components/Header.vue"
 import InputForm from "../components/InputForm.vue"
-import Icons from "@/components/utils/MdiIcons.vue";
+// import Icons from "@/components/utils/MdiIcons.vue";
 
 
 export default {
@@ -39,7 +41,7 @@ export default {
   components: {
     Header,
     InputForm,
-    Icons
+    // Icons
   },
   data() {
     return {
@@ -65,3 +67,8 @@ export default {
   }
 };
 </script>
+<style>
+.textList {
+  padding-left: 0px;
+}
+</style>

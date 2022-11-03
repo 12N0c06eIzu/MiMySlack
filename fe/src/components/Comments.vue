@@ -14,7 +14,7 @@
           class="row list-unstyled pe-3 mt-1"
         >
           <div @:mouseover="showTooltip(index)" @:mouseleave="hiddenTooltip(index)" class="position-relative">
-            <p class="text-start col-9 lh-base">○： {{ value.content }}</p>
+            <p class="text-start col-9 lh-base txt">○：{{ filterValue(value.content) }}</p>
             <div
               v-show="hoverFlag && index === showContentIndex"
               class="text-end"
@@ -54,6 +54,10 @@ export default {
     };
   },
   methods: {
+    filterValue: function(txt) {
+      const regex = / /;
+      return txt.replace(regex, '<br>');
+    },
     /**
      * ツールチップを表示する。
      * @param {*} idx Hoverした要素のIndex
@@ -73,3 +77,9 @@ export default {
   mounted() {},
 };
 </script>
+
+<style scoped>
+.txt p {
+  white-space: pre;
+}
+</style>

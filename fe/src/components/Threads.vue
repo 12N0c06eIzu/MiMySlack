@@ -2,17 +2,24 @@
   <div class="space">
     <Header title="スレッド" />
     <InputForm
-    :inputId="this.$store.state.spaceFunction.spaceId"
-    sendMode="S0003"
+      :inputId="this.$store.state.spaceFunction.spaceId"
+      sendMode="S0003"
     />
     <div>
-      <ul>
-        <li v-for="value in this.$store.state.threadFunction.threadList.data" :key="value" class="row list-unstyled mt-1">
-          <p class="text-start col-10">
-            {{value.content}}
-          </p>
-          <button class="btn btn-light openBtn col-1 border" :value="value.id" @:click="openThread(value.id)">
-            <Icons iconName="arrow-right-thick"/>
+      <ul class="textList">
+        <li
+          v-for="value in this.$store.state.threadFunction.threadList.data"
+          :key="value"
+          class="row list-unstyled my-2"
+        >
+          <button
+            class="btn btn-light openBtn px-3 "
+            :value="value.id"
+            @:click="openThread(value.id)"
+          >
+          {{value.content}}
+
+            <!-- <Icons iconName="arrow-right-thick" /> -->
           </button>
         </li>
       </ul>
@@ -27,17 +34,17 @@
 import axios from "axios";
 // import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import Header from "../components/Header.vue"
-import InputForm from "../components/InputForm.vue"
+import Header from "../components/Header.vue";
+import InputForm from "../components/InputForm.vue";
 
-import Icons from "@/components/utils/MdiIcons.vue";
+// import Icons from "@/components/utils/MdiIcons.vue";
 
 export default {
   name: "HomeView",
   components: {
     Header,
     InputForm,
-    Icons
+    // Icons,
   },
   data() {
     return {
@@ -48,13 +55,21 @@ export default {
     openThread: function (btnValue) {
       this.$store.state.threadFunction.threadId = btnValue;
       // this.$store.state.spaceFunction.spaceId = btnValue;
-      axios.get("http://localhost:3000/comments/searchComments?id=" + this.$store.state.threadFunction.threadId)
+      axios
+        .get(
+          "http://localhost:3000/comments/searchComments?id=" +
+            this.$store.state.threadFunction.threadId
+        )
         .then((res) => {
           this.$store.state.commentFunction.commentList.data = res.data;
         });
-    }
+    },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
+<style>
+.textList {
+  padding-left: 0px;
+}
+</style>
