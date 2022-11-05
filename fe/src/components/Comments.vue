@@ -14,7 +14,7 @@
           class="row list-unstyled pe-3 mt-1"
         >
           <div @:mouseover="showTooltip(index)" @:mouseleave="hiddenTooltip(index)" class="position-relative">
-            <p class="text-start col-9 lh-base txt">○：{{ filterValue(value.content) }}</p>
+            <p class="text-start col-9 lh-base txtContent">{{ filterValue(value.content) }}</p>
             <div
               v-show="hoverFlag && index === showContentIndex"
               class="text-end"
@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style scoped>
-.txt p {
+.txtContent {
   white-space: pre;
 }
 </style>
